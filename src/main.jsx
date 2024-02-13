@@ -2,27 +2,32 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom'
+import Login from './Pages/Login/Login';
+import { redirectToPublic } from './Utils/Utils';
+
+
+//bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
+
 
 const router = createBrowserRouter([
   {
     path: '/login',
-    element: <h1>Login</h1>,
+    element: <Login />,
   },
   {
-    path:'/customer',
-    element:<div>Customer</div>,
-    loader:  () => {
-      const user =  localStorage.getItem('userLaPopular')
-      if(!user){
-        console.log(user)
-        return redirect('/login')
-      }
-      return null;
-    }
+    path: '/customer',
+    element: <div>			<p class="h5">Card</p>
+    </div>,
+    loader: () => redirectToPublic(),
   },
   {
-    path:'/admin',
-    element:<div>Admin</div>
+    path: '/admin',
+    element: <div>Admin</div>,
+    loader: () => redirectToPublic()
+
   }
 ]);
 
