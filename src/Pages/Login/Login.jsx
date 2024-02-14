@@ -1,37 +1,54 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Footer from '../../Components/Footer'
 import Logo from '../../Components/Logo'
-import { Outlet } from 'react-router-dom'
 
 const Login = () => {
+	const [username, setUsername] = useState('')
+	const [password, setPassword] = useState('')
+	const [usernameError, setUsernameError] = useState(false)
+	const [passwordError, setPasswordError] = useState(false)
 
-	const login = (e) => {
-		const user =
-		{
-			username: 'Paquito',
-			token: 'kjhy3254nrbisdgfuyr3t4bi5whje dkjdwi7ft8743rw hwyyuewhds',
-			isAdmin: true
+
+	const login = () => {
+		setUsernameError(false)
+		setPasswordError(false)
+		if (username !== '' && password !== '') {
+
+
+		} else if (username == '' || password == '') {
+			if (username == '') {
+				setUsernameError(true)
+			} if (password == '') {
+				setPasswordError(true)
+			}
 		}
 
-		localStorage.setItem('userLaPopular', JSON.stringify(user))
 
 	}
 
 	return (
 		<>
-		<nav/>
-		<Outlet/>
-		
-			<div class="shadow " style={{ width: '400px', height: "400px", borderRadius: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
-				<p class="h1">Bienvenido</p>
-				<Logo height={'100px'} />
-				<div className='w-75 '>
-					<label for="username" class="form-label">Usuario</label>
-					<input id="username" class="form-control w-75 form-control-sm" type="text" placeholder="Nombre de Usuario" aria-label=".form-control-sm example" />
+			<div style={{ height: '80vh', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+				<div className="shadow " style={{ width: '400px', height: "460px", borderRadius: '15px', display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+					<p className="h3 mt-4">¡Bienvenido!</p>
+					<Logo height={'150px'} />
+					<p className="h6 ">Ingrese sus credenciales</p>
+					<form style={{ width: "60%" }}>
+						<div >
+							<label htmlFor="username" className="form-label">Usuario</label>
+							<input value={username} onChange={(e) => setUsername(e.target.value)} id="username" className={`form-control form-control-md ${usernameError ? 'is-invalid' : ''}`} type="text" placeholder="Nombre de Usuario" aria-label=".form-control-sm example" />
+						</div>
+						<div className='mt-2' >
+							<label htmlFor="password" className="form-label">Contraseña</label>
+							<input value={password} onChange={(e) => setPassword(e.target.value)} style={{ borderColor: '' }} id="password" className={`form-control form-control-md ${passwordError ? 'is-invalid' : ''}`} type="text" placeholder="Contraseña" aria-label=".form-control-sm example" />
+						</div>
+						<div style={{ display: 'flex', justifyContent: 'end' }}>
+							<button onClick={() => login()} type="button" className="btn btn-success mt-2" style={{ borderRadius: '2em' }}>Autenticar</button>
+						</div>
+
+					</form>
 				</div>
-
 			</div>
-
 			<Footer />
 		</>
 	)

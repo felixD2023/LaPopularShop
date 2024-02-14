@@ -7,7 +7,7 @@ import { redirectToPublic } from './Utils/Utils';
 
 
 //bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '../scss/customer.css'
 
 
 
