@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, redirect, RouterProvider } from 'react-router-dom'
 import Login from './Pages/Login/Login';
 import { redirectToPublic } from './Utils/Utils';
+import Customer from './Pages/Customer/Customer';
 
 
 //bootstrap
@@ -19,8 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/customer',
-    element: <div>			<p class="h5">Card</p>
-    </div>,
+    element: <Customer/>,
     loader: () => redirectToPublic(),
   },
   {
