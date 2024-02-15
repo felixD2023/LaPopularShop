@@ -8,7 +8,7 @@ import Customer from './Pages/Customer/Customer';
 
 
 //bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css'
+import '../scss/customer.css'
 
 
 
