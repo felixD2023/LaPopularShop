@@ -34,7 +34,7 @@ const Buys = () => {
 
 	return (
 		<>
-			<div className='shadow' style={{ display: 'flex', justifyContent: 'center', borderRadius: '15px', width: '80%', height: '90%' }}>
+			<div className='shadow ' style={{background:'white', display: 'flex', justifyContent: 'center', borderRadius: '15px', width: '80%', height: '90%' }}>
 				<Navbar names={data} />
 			</div>
 		</>

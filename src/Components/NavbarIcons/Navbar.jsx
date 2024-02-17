@@ -5,13 +5,13 @@ import Cursor from './Cursor'
 const Navbar = ({ names }) => {
 	const [itemActive, setItemActive] = useState(0)
 	const [activeLeft,setActiveLeft] = useState(0)
-	
+	const [activeWidth,setActiveWidth] = useState(0)
 	return (
 		<>
 			<div className='bg-success' style={{ position:'relative',display: 'flex', justifyContent: 'space-evenly', width: '90%', height: '40px', marginTop: '10px', borderRadius: '2em' }}>
-				<Cursor activeLeft={activeLeft}/>
+				<Cursor activeLeft={activeLeft} activeWidth={activeWidth}/>
 				{names.map((item, index) =>
-					<NavItem key={item.name}  setActiveLeft={setActiveLeft} toActive={setItemActive} index={index} isActive={itemActive === index} name={item.name} icon={item.icon} />
+					<NavItem key={item.name}  setActiveLeft={setActiveLeft} setActiveWidth={setActiveWidth} toActive={setItemActive} index={index} isActive={itemActive === index} name={item.name} icon={item.icon} />
 				)}
 			</div>
 		</>

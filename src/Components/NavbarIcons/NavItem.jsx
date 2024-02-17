@@ -1,10 +1,11 @@
 import React, { useEffect,useRef } from 'react'
 
-const NavItem = ({name,icon,isActive,toActive,index,setActiveLeft}) => {
+const NavItem = ({name,icon,isActive,toActive,index,setActiveLeft,setActiveWidth}) => {
 	const refItem=useRef(null)
 	useEffect(()=>{
 		if(isActive){
 			setActiveLeft(refItem.current.offsetLeft)
+			setActiveWidth(refItem.current.offsetWidth)
 		}
 	},[isActive])
 	return (
