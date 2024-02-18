@@ -5,7 +5,7 @@ import leche from "../../Images/leche.png"
 import martillo from "../../Images/martillo.png"
 import silla from "../../Images/silla.png"
 import sopa from "../../Images/sopa.png"
-import taladro from "../../Images/taladro.png"
+import harina from "../../Images/harina.png"
 import yogurt from "../../Images/yogurt.png"
 
 export const articulos = [
@@ -46,8 +46,8 @@ export const articulos = [
 
     },
     {  
-        "imagen": taladro,
-        "nombre": "taladro",
+        "imagen": harina,
+        "nombre": "harina",
         "precio": 60
 
     },
