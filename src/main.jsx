@@ -10,6 +10,10 @@ import ProductStock from './Pages/Customer/ProductStock';
 
 //bootstrap
 import '../scss/customer.css'
+import AdminDashBoard from './Pages/Admin/AdminDashBoard';
+import Users from './Pages/Admin/Users/Users';
+import Buys from './Pages/Admin/Buys/Buys';
+import Products from './Pages/Admin/Products/Products';
 
 
 
@@ -37,8 +41,26 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <div>Admin</div>,
-    loader: () => redirectToPublic()
+    element: <AdminDashBoard/>,
+    loader: () => redirectToPublic(),
+    children:[
+      {
+        path:'',
+        element:<Navigate to={'users'} />
+      },
+      {
+        path:'users',
+        element:<Users/>
+      },
+      {
+        path:'buys',
+        element:<Buys/>
+      },
+      {
+        path:'products',
+        element:<Products/>
+      }
+    ]
 
   }
 ]);

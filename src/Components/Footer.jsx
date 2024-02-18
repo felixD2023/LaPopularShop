@@ -13,7 +13,8 @@ const Footer = () => {
 							<div className='h4 m-auto'>&nbsp;La Popular</div>
 						</div>
 					</div>
-					<p style={{ fontSize: '13px' }}>Todo lo que necesitas en un solo lugar. Desde moda hasta tecnología,
+					<p style={{ fontSize: '13px' }}>
+						Todo lo que necesitas en un solo lugar. Desde moda hasta tecnología,
 						en nuestra tienda tenemos todo lo que buscas.
 						¡Bienvenido a un mundo de posibilidades, bienvenido a La Popular!
 					</p>

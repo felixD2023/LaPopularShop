@@ -1,5 +1,5 @@
 import React from 'react'
-import logoImg from '../Images/logo.png'
+import logoImg from '../Images/logo.jpg'
 
 const Logo = ({height}) => {
   return (
