@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import MenuItem from './MenuItem'
 import Logo from '../../Components/Logo'
-import iconProductos from '../../Images/transportation-cart-svgrepo-com.svg'
-import iconUser from '../../Images/icon-user.svg'
-import iconBuys from '../../Images/icon-buys.svg'
+import iconProductos from '../../Images/Icons/icon-products-list.svg'
+import iconUser from '../../Images/Icons/icon-user.svg'
+import iconBuys from '../../Images/Icons/icon-buys.svg'
 
 const Menu = () => {
 	const [itemActive, setItemActive] = useState(0)

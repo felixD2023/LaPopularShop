@@ -1,0 +1,156 @@
+[
+    {
+        "firstName": "Laura",
+        "lastName": "Martinez",
+        "username": "lauramartinez",
+        "password": "password123",
+        "is_admin": false,
+        "address": "Calle 123",
+        "phone": "555-1234",
+        "email": "lauramartinez@example.com",
+        "ID": 12345678901
+    },
+    {
+        "firstName": "Carlos",
+        "lastName": "Garcia",
+        "username": "carlosgarcia",
+        "password": "password456",
+        "is_admin": true,
+        "address": "Avenida 456",
+        "phone": "555-5678",
+        "email": "carlosgarcia@example.com",
+        "ID": 23456789012
+    },
+    {
+        "firstName": "Ana",
+        "lastName": "Rodriguez",
+        "username": "anarodriguez",
+        "password": "password789",
+        "is_admin": false,
+        "address": "Calle 789",
+        "phone": "555-9012",
+        "email": "anarodriguez@example.com",
+        "ID": 34567890123
+    },
+    {
+        "firstName": "Diego",
+        "lastName": "Lopez",
+        "username": "diegolopez",
+        "password": "password123",
+        "is_admin": false,
+        "address": "Calle 123",
+        "phone": "555-1234",
+        "email": "diegolopez@example.com",
+        "ID": 45678901234
+    },
+    {
+        "firstName": "Sofia",
+        "lastName": "Hernandez",
+        "username": "sofiahernandez",
+        "password": "password456",
+        "is_admin": true,
+        "address": "Avenida 456",
+        "phone": "555-5678",
+        "email": "sofiahernandez@example.com",
+        "ID": 56789012345
+    },
+    {
+        "firstName": "Javier",
+        "lastName": "Gomez",
+        "username": "javiergomez",
+        "password": "password789",
+        "is_admin": false,
+        "address": "Calle 789",
+        "phone": "555-9012",
+        "email": "javiergomez@example.com",
+        "ID": 67890123456
+    },
+    {
+        "firstName": "Elena",
+        "lastName": "Sanchez",
+        "username": "elenasanchez",
+        "password": "password123",
+        "is_admin": false,
+        "address": "Calle 123",
+        "phone": "555-1234",
+        "email": "elenasanchez@example.com",
+        "ID": 78901234567
+    },
+    {
+        "firstName": "Raul",
+        "lastName": "Ramirez",
+        "username": "raulramirez",
+        "password": "password456",
+        "is_admin": true,
+        "address": "Avenida 456",
+        "phone": "555-5678",
+        "email": "raulramirez@example.com",
+        "ID": 89012345678
+    },
+    {
+        "firstName": "Luisa",
+        "lastName": "Torres",
+        "username": "luisatorres",
+        "password": "password789",
+        "is_admin": false,
+        "address": "Calle 789",
+        "phone": "555-9012",
+        "email": "luisatorres@example.com",
+        "ID": 90123456789
+    },
+    {
+        "firstName": "Pablo",
+        "lastName": "Diaz",
+        "username": "pablodiaz",
+        "password": "password123",
+        "is_admin": false,
+        "address": "Calle 123",
+        "phone": "555-1234",
+        "email": "pablodiaz@example.com",
+        "ID": 12345678901
+    },
+    {
+        "firstName": "Marina",
+        "lastName": "Ortega",
+        "username": "marinaortega",
+        "password": "password456",
+        "is_admin": true,
+        "address": "Avenida 456",
+        "phone": "555-5678",
+        "email": "marinaortega@example.com",
+        "ID": 23456789012
+    },
+    {
+        "firstName": "Hector",
+        "lastName": "Mendez",
+        "username": "hectormendez",
+        "password": "password789",
+        "is_admin": false,
+        "address": "Calle 789",
+        "phone": "555-9012",
+        "email": "hectormendez@example.com",
+        "ID": 34567890123
+    },
+    {
+        "firstName": "Carmen",
+        "lastName": "Jimenez",
+        "username": "carmenjimenez",
+        "password": "password123",
+        "is_admin": false,
+        "address": "Calle 123",
+        "phone": "555-1234",
+        "email": "carmenjimenez@example.com",
+        "ID": 45678901234
+    },
+    {
+        "firstName": "Roberto",
+        "lastName": "Vargas",
+        "username": "robertovargas",
+        "password": "password456",
+        "is_admin": true,
+        "address": "Avenida 456",
+        "phone": "555-5678",
+        "email": "robertovargas@example.com",
+        "ID": 56789012345
+    }
+]
