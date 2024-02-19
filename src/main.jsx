@@ -5,9 +5,9 @@ import { createBrowserRouter, Navigate,RouterProvider } from 'react-router-dom'
 import Login from './Pages/Login/Login';
 import { redirectToPublic } from './Utils/Utils';
 
-
 //bootstrap
 import '../scss/customer.css'
+
 import AdminDashBoard from './Pages/Admin/AdminDashBoard';
 import Users from './Pages/Admin/Users/Users';
 import Buys from './Pages/Admin/Buys/Buys';
@@ -16,8 +16,11 @@ import UserList from './Pages/Admin/Users/UserList';
 import UserInsert from './Pages/Admin/Users/UserInsert';
 import UserUpdate from './Pages/Admin/Users/UserUpdate';
 import UserDetail from './Pages/Admin/Users/UserDetail';
-
-
+import ProductList from './Pages/Admin/Products/ProductList'
+import BuyList from './Pages/Admin/Buys/BuyList';
+import ProductInsert from './Pages/Admin/Products/ProductInsert';
+import ProductUpdate from './Pages/Admin/Products/ProductUpdate';
+import ProductDetail from './Pages/Admin/Products/ProductDetail';
 
 
 const router = createBrowserRouter([
@@ -76,7 +79,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'list',
-            element: <div className='h3'>Listar</div>
+            element: <BuyList/>
           }
         ]
       },
@@ -90,8 +93,21 @@ const router = createBrowserRouter([
           },
           {
             path: 'list',
-            element: <div className='h3'>Listar</div>
-          }
+            element: <ProductList/>
+          },
+          {
+            path: 'insert',
+            element: <ProductInsert/>
+          },
+          {
+            path: 'update',
+            element: <ProductUpdate/>
+          },
+          {
+            path: 'detail',
+            element: <ProductDetail/>
+          },
+
         ]
       }
     ]

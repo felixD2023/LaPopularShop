@@ -1,0 +1,107 @@
+[
+    {
+        "name": "Camisa",
+        "category": "Ropa",
+        "price": 20,
+        "description": "Camisa de algodón de manga larga",
+        "on_stock": true
+    },
+    {
+        "name": "Pantalón",
+        "category": "Ropa",
+        "price": 30,
+        "description": "Pantalón de mezclilla",
+        "on_stock": true
+    },
+    {
+        "name": "Zapatos",
+        "category": "Calzado",
+        "price": 50,
+        "description": "Zapatos de cuero para hombre",
+        "on_stock": true
+    },
+    {
+        "name": "Bolso",
+        "category": "Accesorios",
+        "price": 40,
+        "description": "Bolso de mano de cuero sintético",
+        "on_stock": false
+    },
+    {
+        "name": "Bufanda",
+        "category": "Accesorios",
+        "price": 15,
+        "description": "Bufanda de lana",
+        "on_stock": true
+    },
+    {
+        "name": "Gorra",
+        "category": "Accesorios",
+        "price": 10,
+        "description": "Gorra de béisbol",
+        "on_stock": true
+    },
+    {
+        "name": "Reloj",
+        "category": "Accesorios",
+        "price": 80,
+        "description": "Reloj analógico de acero inoxidable",
+        "on_stock": true
+    },
+    {
+        "name": "Lámpara",
+        "category": "Hogar",
+        "price": 60,
+        "description": "Lámpara de pie moderna",
+        "on_stock": true
+    },
+    {
+        "name": "Silla",
+        "category": "Hogar",
+        "price": 70,
+        "description": "Silla de comedor de madera",
+        "on_stock": false
+    },
+    {
+        "name": "Mesa",
+        "category": "Hogar",
+        "price": 100,
+        "description": "Mesa de centro de vidrio",
+        "on_stock": true
+    },
+    {
+        "name": "Libreta",
+        "category": "Papelería",
+        "price": 5,
+        "description": "Libreta de notas con tapa dura",
+        "on_stock": true
+    },
+    {
+        "name": "Pluma",
+        "category": "Papelería",
+        "price": 2,
+        "description": "Pluma de tinta negra",
+        "on_stock": true
+    },
+    {
+        "name": "Calculadora",
+        "category": "Electrónica",
+        "price": 20,
+        "description": "Calculadora científica",
+        "on_stock": true
+    },
+    {
+        "name": "Cargador portátil",
+        "category": "Electrónica",
+        "price": 30,
+        "description": "Cargador portátil de 10000mAh",
+        "on_stock": true
+    },
+    {
+        "name": "Auriculares",
+        "category": "Electrónica",
+        "price": 50,
+        "description": "Auriculares inalámbricos con cancelación de ruido",
+        "on_stock": true
+    }
+]

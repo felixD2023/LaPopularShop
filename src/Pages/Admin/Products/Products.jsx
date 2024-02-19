@@ -12,18 +12,22 @@ const Products = () => {
 	const data = [
 		{
 			name: 'Todos los productos',
-			icon: iconProductsList
+			icon: iconProductsList,
+			route:'list'
 		},
 		{
 			name: 'Insertar uno',
-			icon:iconProductsInsert
+			icon:iconProductsInsert,
+			route:'insert'
 		},
 		{
 			name: 'Modificar uno',
-			icon:iconProductsUpdate
+			icon:iconProductsUpdate,
+			route:'update'
 		}, {
 			name: 'Ver uno',
-			icon:iconProductsDetail
+			icon:iconProductsDetail,
+			route:'detail'
 		}]
 
 	return (

@@ -10,7 +10,7 @@ import { Outlet } from 'react-router-dom'
 const Buys = () => {
 	const data = [
 		{
-			name: 'Todos los usuarios',
+			name: 'Todas las compras',
 			icon:iconBuys
 		},
 		{
