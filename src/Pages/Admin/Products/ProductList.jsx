@@ -1,5 +1,5 @@
 import React from 'react'
-import productsData from './products.json'
+import {products as productsData}  from './products.js' 
 import iconRemove from '../../../Images/Icons/icon-remove.svg'
 import iconEdit from '../../../Images/Icons/icon-edit.svg'
 import iconDetail from '../../../Images/Icons/icon-detail.svg'
@@ -26,7 +26,7 @@ const UserList = () => {
 					<tbody >
 						{
 							productsData.map((product, index) =>
-								<tr key={index} style={{ cursor: 'pointer' }}>
+								<tr key={index} >
 									<th scope="row">{index}</th>
 									<td>{product.name}</td>
 									<td>{product.category}</td>

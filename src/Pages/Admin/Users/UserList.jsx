@@ -27,7 +27,7 @@ const UserList = () => {
 					<tbody >
 						{
 							usersData.map((user, index) =>
-								<tr key={index} style={{ cursor: 'pointer' }}>
+								<tr key={index} >
 									<th scope="row">{index}</th>
 									<td>{user.firstName}</td>
 									<td>{user.lastName}</td>

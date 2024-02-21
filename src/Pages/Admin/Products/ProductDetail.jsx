@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import productsData from './products.json'
+import {products as productsData} from './products.js'
+import { useNavigate } from 'react-router-dom'
 
 const ProductDetail = () => {
     const [product, setProduct] = useState(productsData[0])
+    const navigate = useNavigate()
 
   return (
     <div className='w-100 mt-4' style={{ display: 'flex', height: '85%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
@@ -43,10 +45,6 @@ const ProductDetail = () => {
         <div className="mb-3">
           <div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>¿A la venta?: </span>{product.on_stock ? 'Sí' : 'No'}</div>
         </div>
-      </div>
-
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        
         <div className='mb-3'>
           <div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Categoría: </span>{product.category}</div>
         </div>
@@ -54,11 +52,16 @@ const ProductDetail = () => {
           <div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Descripción: </span>{product.description}</div>
         </div>
 
+      </div>
+
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        
+       <img src={product.img} style={{borderRadius:'15px'}}/>
 
       </div>
       <div style={{ display: 'flex', width: '70%', justifyContent: 'end' }}>
         <div style={{ display: 'flex', width: '250px', justifyContent: 'space-between' }}>
-          <input className='btn btn-success' value={'Editar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
+          <input className='btn btn-success' onClick={()=>navigate('/admin/products/update')} value={'Editar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
           <input className='btn btn-danger' data-bs-toggle="modal" data-bs-target="#staticBackdrop" value={'Eliminar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
         </div>
 

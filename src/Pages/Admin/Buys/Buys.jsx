@@ -11,18 +11,18 @@ const Buys = () => {
 	const data = [
 		{
 			name: 'Todas las compras',
-			icon:iconBuys
+			icon:iconBuys,
+			route:'list'
 		},
 		{
 			name: 'Insertar uno',
-			icon:iconBuysInsert
+			icon:iconBuysInsert,
+			route:'insert'
 		},
 		{
-			name: 'Modificar uno',
-			icon:iconBuysUpdate
-		}, {
 			name: 'Ver uno',
-			icon:iconBuysDetail
+			icon:iconBuysDetail,
+			route:'detail'
 		}]
 
 	return (

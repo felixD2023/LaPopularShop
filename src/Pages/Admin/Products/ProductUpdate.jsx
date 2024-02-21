@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import products from './products.json'
+import { products } from './products.js'
 
 const ProductUpdate = () => {
-	const [product,setProduct] = useState(products[0])
+	const [product, setProduct] = useState(products[0])
 	const navigate = useNavigate()
 
 	return (
@@ -23,6 +23,7 @@ const ProductUpdate = () => {
 					<label className="form-check-label" htmlFor="Is_Admin">
 					</label>
 				</div>
+				
 			</div>
 
 			<div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -35,7 +36,10 @@ const ProductUpdate = () => {
 					<label htmlFor="Description" className="form-label">Descripción</label>
 					<input autoComplete='none' value={product.description} type="text" className="form-control" id="Description" placeholder="Descripción" />
 				</div>
-
+				<div class="mb-3">
+					<label htmlFor="Image" class="form-label">Imagen</label>
+					<input className="form-control" type="file" id="Image" />
+				</div>
 				<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 					<input className='btn btn-success' value={'Insertar'} type='button' style={{ width: '100px', borderRadius: '2em' }} />
 					<input onClick={() => navigate('/admin/products/list')} className='btn btn-danger' value={'Cancelar'} type='button' style={{ width: '100px', borderRadius: '2em' }} />

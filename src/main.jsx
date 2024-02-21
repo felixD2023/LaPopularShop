@@ -10,8 +10,8 @@ import '../scss/customer.css'
 
 import AdminDashBoard from './Pages/Admin/AdminDashBoard';
 import Users from './Pages/Admin/Users/Users';
-import Buys from './Pages/Admin/Buys/Buys';
-import Products from './Pages/Admin/Products/Products';
+import Buys from './Pages/Admin/Buys/Buys.jsx';
+import Products from './Pages/Admin/Products/Products.jsx';
 import UserList from './Pages/Admin/Users/UserList';
 import UserInsert from './Pages/Admin/Users/UserInsert';
 import UserUpdate from './Pages/Admin/Users/UserUpdate';
@@ -21,6 +21,8 @@ import BuyList from './Pages/Admin/Buys/BuyList';
 import ProductInsert from './Pages/Admin/Products/ProductInsert';
 import ProductUpdate from './Pages/Admin/Products/ProductUpdate';
 import ProductDetail from './Pages/Admin/Products/ProductDetail';
+import BuyInsert from './Pages/Admin/Buys/BuyInsert';
+import BuyDetail from './Pages/Admin/Buys/BuyDetail.jsx';
 
 
 const router = createBrowserRouter([
@@ -80,6 +82,14 @@ const router = createBrowserRouter([
           {
             path: 'list',
             element: <BuyList/>
+          },
+          {
+            path:'insert',
+            element:<BuyInsert/>
+          },
+          {
+            path:'detail',
+            element:<BuyDetail/>
           }
         ]
       },

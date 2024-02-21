@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import usersData from './users.json'
-
-
 import 'bootstrap/js/dist/modal'
+import { useNavigate } from 'react-router-dom'
 
 const UserDetail = () => {
   const [user, setUser] = useState(usersData[0])
+  const navigate = useNavigate()
   return (
     <div className='w-100 mt-4' style={{ display: 'flex', height: '85%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
 
@@ -32,7 +32,6 @@ const UserDetail = () => {
 
 
       {/*Detail Section */}
-
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div className='mb-3'>
           <div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Nombre de Usuario: </span>{user.username}</div>
@@ -67,7 +66,7 @@ const UserDetail = () => {
       </div>
       <div style={{ display: 'flex', width: '70%', justifyContent: 'end' }}>
         <div style={{ display: 'flex', width: '250px', justifyContent: 'space-between' }}>
-          <input className='btn btn-success' value={'Editar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
+          <input className='btn btn-success' onClick={()=>navigate('/admin/users/update')} value={'Editar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
           <input className='btn btn-danger' data-bs-toggle="modal" data-bs-target="#staticBackdrop" value={'Eliminar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
         </div>
 
