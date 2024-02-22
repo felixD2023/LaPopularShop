@@ -2,14 +2,14 @@ import React from 'react'
 
 const Componente = ({ imagen, precio, nombre }) => {
 	return (
-		<div className='shadow' style={{width:"235px",height:"235px",borderRadius:"20%",marginRight:"60px",marginBottom:"10px",backgroundColor:"#f8f9fa"}}>
+		<div className='shadow' style={{width:"235px",height:"235px",borderRadius:"20%",marginRight:"60px",marginBottom:"10px",backgroundColor:"#ffffff"}}>
 			<div style={{display:"flex", justifyContent:"center"}}> 
-			<img src={imagen} style={{width:"130px", height:"130px"}}></img>
+			<img src={imagen} style={{width:"130px", height:"130px",marginBottom:"20px"}}></img>
 			</div>
 			
-			<div>{nombre}</div>
+			<div className='h6' style={{marginLeft:"90px"}}>{nombre}</div>
 			<div style={{display:"flex"}}>
-				<div style={{padding:"15px",borderRadius:'2em', border:"1px solid black",height:'10px',display:'flex',alignItems:'center'}}>$ {precio}</div>
+				<div className="h6" style={{padding:"15px",borderRadius:'2em', border:"1px solid black",height:'10px',display:'flex',alignItems:'center',marginRight:"100px",marginLeft:"15px"}}>$ {precio}</div>
 				<button className='btn btn-success' style={{borderRadius:'50%'}}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
 						<path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z" />

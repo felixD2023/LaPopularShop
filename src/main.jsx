@@ -6,6 +6,7 @@ import Login from './Pages/Login/Login';
 import { redirectToPublic } from './Utils/Utils';
 import Customer from './Pages/Customer/Customer';
 import ProductStock from './Pages/Customer/ProductStock';
+import InfoPersonal from './Pages/Customer/InfoPersonal';
 
 
 //bootstrap
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
       {
         path:'',
         element: <ProductStock/>
+      },
+      {
+        path:'InfoPersonal',
+        element: <InfoPersonal/>
+
       },
       {
         path:'*',

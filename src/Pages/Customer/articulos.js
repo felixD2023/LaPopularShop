@@ -11,49 +11,49 @@ import yogurt from "../../Images/yogurt.png"
 export const articulos = [
     {  
         "imagen": camara,
-        "nombre": "camara",
+        "nombre": "Camara",
         "precio": 200
 
     },
     {  
         "imagen": huevos,
-        "nombre": "huevos",
+        "nombre": "Huevos",
         "precio": 10
 
     },
     {  
         "imagen": leche,
-        "nombre": "leche",
+        "nombre": "Leche",
         "precio": 5
 
     },
     {  
         "imagen": martillo,
-        "nombre": "martillo",
+        "nombre": "Martillo",
         "precio": 30
 
     },
     {  
         "imagen": silla,
-        "nombre": "silla",
+        "nombre": "Silla",
         "precio": 30
 
     },
     {  
         "imagen": sopa,
-        "nombre": "sopa",
+        "nombre": "Sopa",
         "precio": 2
 
     },
     {  
         "imagen": harina,
-        "nombre": "harina",
+        "nombre": "Harina",
         "precio": 60
 
     },
     {  
         "imagen": yogurt,
-        "nombre": "yogurt",
+        "nombre": "Yogurt",
         "precio": 2
 
     }
