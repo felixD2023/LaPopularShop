@@ -2,7 +2,7 @@ import React from 'react'
 
 const Cursor = ({ activeLeft,activeWidth }) => {
 	return (
-		<>
+		<div >
 			<div className='bg-success' style={{
 				position: 'absolute', top: '19px',
 				left: `${activeLeft + activeWidth/2 - 45 / 2}px`, width: '45px', height: '45px',
@@ -20,7 +20,7 @@ const Cursor = ({ activeLeft,activeWidth }) => {
 				<div className='bg-success' style={{width:'20px',height:'20px',
 				borderRadius:'0px 0px 0px 100px'}}/>
 			</div>
-		</>
+		</div>
 
 	)
 }

@@ -1,12 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MenuItem from './MenuItem'
 import Logo from '../../Components/Logo'
-import iconProductos from '../../Images/transportation-cart-svgrepo-com.svg'
-import iconUser from '../../Images/icon-user.svg'
-import iconBuys from '../../Images/icon-buys.svg'
+import iconProductos from '../../Images/Icons/icon-products-list.svg'
+import iconUser from '../../Images/Icons/icon-user.svg'
+import iconBuys from '../../Images/Icons/icon-buys.svg'
+import { useLocation } from 'react-router-dom'
 
 const Menu = () => {
-	const [itemActive, setItemActive] = useState(0)
+	const [itemActive, setItemActive] = useState(-1)
+	const location = useLocation()
+
+	useEffect(()=>{
+		if(location.pathname.includes('users')){
+			setItemActive(0);
+		}else if(location.pathname.includes('buys')){
+			setItemActive(1)
+		}else if(location.pathname.includes('products')){
+			setItemActive(2)
+		}
+	},[])
+
 	const data = [
 		{
 			name: "Usuarios",
