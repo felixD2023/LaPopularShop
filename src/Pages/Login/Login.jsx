@@ -1,8 +1,10 @@
 import React, { useRef, useState } from 'react'
 import Footer from '../../Components/Footer'
 import Logo from '../../Components/Logo'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+	const navigate=useNavigate()
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	const [usernameError, setUsernameError] = useState(false)
@@ -13,7 +15,13 @@ const Login = () => {
 		setUsernameError(false)
 		setPasswordError(false)
 		if (username !== '' && password !== '') {
+			localStorage.setItem('userLaPopular', JSON.stringify({ username: username, password: password }))
 
+			if(username==='admin'){
+				navigate('/admin')
+			}else if(username==='customer'){
+				navigate('/customer')
+			}
 
 		} else if (username == '' || password == '') {
 			if (username == '') {

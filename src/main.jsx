@@ -23,6 +23,7 @@ import ProductUpdate from './Pages/Admin/Products/ProductUpdate';
 import ProductDetail from './Pages/Admin/Products/ProductDetail';
 import BuyInsert from './Pages/Admin/Buys/BuyInsert';
 import BuyDetail from './Pages/Admin/Buys/BuyDetail.jsx';
+import BuyUpdate from './Pages/Admin/Buys/BuyUpdate.jsx';
 
 
 const router = createBrowserRouter([
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
           {
             path:'detail',
             element:<BuyDetail/>
+          },
+          {
+            path:'update',
+            element:<BuyUpdate/>
           }
         ]
       },

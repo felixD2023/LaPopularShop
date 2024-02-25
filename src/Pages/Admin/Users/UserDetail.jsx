@@ -63,36 +63,35 @@ const UserDetail = () => {
           <div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Correo: </span>{user.email}</div>
         </div>
 
-      </div>
-      <div style={{ display: 'flex', width: '70%', justifyContent: 'end' }}>
         <div style={{ display: 'flex', width: '250px', justifyContent: 'space-between' }}>
-          <input className='btn btn-success' onClick={()=>navigate('/admin/users/update')} value={'Editar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
+          <input className='btn btn-success' onClick={() => navigate('/admin/users/update')} value={'Editar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
           <input className='btn btn-danger' data-bs-toggle="modal" data-bs-target="#staticBackdrop" value={'Eliminar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
         </div>
-
       </div>
 
-
       {/*Modal */}
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar Usuario</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="staticBackdropLabel">Eliminar Usuario</h1>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className='w-100' style={{ display: 'flex', justifyContent: 'center' }}>
               <div className='w-75'> Está a punto de eliminar un usuario, ¿está seguro que desea hacerlo?</div>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-danger">Eliminar</button>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" className="btn btn-danger">Eliminar</button>
             </div>
           </div>
         </div>
       </div>
+
+
+
 
     </div>
   )

@@ -9,23 +9,26 @@ const UserUpdate = () => {
   return (
     <div className='w-100 mt-4' style={{ display: 'flex', height: '85%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
 
-      <div style={{ display: 'flex', width: '80%', height: '60px', justifyContent: 'space-around', alignItems: 'end' }}>
-        <div className=''>
-          <label htmlFor="SearchByCI" class="form-label" style={{ fontSize: '13px' }}>Buscar por CI</label>
-          <input type="text" className="form-control form-control-sm " id="SearchByCI" placeholder="Nombre de Usuario" />
+     {/*Search Section*/}
+     <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ marginBottom: '20px', display: 'flex', width: '80%', height: '60px', justifyContent: 'space-around', alignItems: 'end' }}>
+          <div className=''>
+            <label htmlFor="SearchByCI" class="form-label" style={{ fontSize: '13px' }}>Buscar por CI</label>
+            <input type="text" className="form-control form-control-sm " id="SearchByCI" placeholder="CI" />
+          </div>
+          <div className=''>
+            <label htmlFor="SearchByFirstName" class="form-label" style={{ fontSize: '13px' }}>Buscar por Nombre(s)</label>
+            <input type="text" className="form-control form-control-sm " id="SearchByFirstName" placeholder="Nombre(s)" />
+          </div>
+          <div className=''>
+            <label htmlFor="SearchByLastName" class="form-label" style={{ fontSize: '13px' }}>Buscar por Apellido(s)</label>
+            <input type="text" autoComplete='none' className="form-control form-control-sm " id="SearchByLastName" placeholder="Apellido(s)" />
+          </div>
+          <input className='btn btn-primary' value={'Buscar'} type='button' style={{ width: '80px', height: '40px', borderRadius: '2em' }} />
         </div>
-        <div className=''>
-          <label htmlFor="SearchByFirstName" class="form-label" style={{ fontSize: '13px' }}>Buscar por nombre(s)</label>
-          <input type="text" className="form-control form-control-sm " id="SearchByFirstName" placeholder="Nombre de Usuario" />
-        </div>
-        <div className=''>
-          <label htmlFor="SearchByLastName" class="form-label" style={{ fontSize: '13px' }}>Buscar por Apellido(s)</label>
-          <input type="text" autoComplete='none' className="form-control form-control-sm " id="SearchByLastName" placeholder="Nombre de Usuario" />
-        </div>
-        <button className='btn btn-primary' type='button' style={{ width: '80px', height: '40px', borderRadius: '2em' }} >Buscar</button>
-      </div>
+        <div style={{ width: '80%', height: '1px', backgroundColor: 'silver', borderRadius: '2em' }} />
 
-      <div style={{ width: '80%', height: '1px', backgroundColor: 'silver', borderRadius: '2em' }} />
+      </div>
 
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <div className='mb-3'>

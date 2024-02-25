@@ -1,5 +1,10 @@
 import { products } from "../Products/products";
 import users from '../Users/users.json'
+
+export const states =[
+    "Pagado","En Camino","Entregado",
+]
+
 export const buys=[
     {
         "ID": 1,
@@ -8,7 +13,8 @@ export const buys=[
         "hour": "10:30",
         "date": "2022-05-15",
         "totalValue": 50,
-        "productsQuantity": 2
+        "productsQuantity": 2,
+        "state":states[0]
     },
     {
         "ID": 2,
@@ -17,7 +23,8 @@ export const buys=[
         "hour": "15:45",
         "date": "2022-05-16",
         "totalValue": 65,
-        "productsQuantity": 2
+        "productsQuantity": 2,
+        "state":states[0]
     },
     {
         "ID": 3,
@@ -26,7 +33,8 @@ export const buys=[
         "hour": "12:00",
         "date": "2022-05-17",
         "totalValue": 140,
-        "productsQuantity": 2
+        "productsQuantity": 2,
+        "state":states[0]
     },
     {
         "ID": 4,
@@ -35,7 +43,8 @@ export const buys=[
         "hour": "09:00",
         "date": "2022-05-18",
         "totalValue": 100,
-        "productsQuantity": 1
+        "productsQuantity": 1,
+        "state":states[0]
     },
     {
         "ID": 5,
@@ -44,7 +53,8 @@ export const buys=[
         "hour": "17:30",
         "date": "2022-05-19",
         "totalValue": 27,
-        "productsQuantity": 3
+        "productsQuantity": 3,
+        "state":states[0]
     }
     ]
 
