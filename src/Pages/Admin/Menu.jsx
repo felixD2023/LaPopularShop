@@ -4,33 +4,39 @@ import Logo from '../../Components/Logo'
 import iconProductos from '../../Images/Icons/icon-products-list.svg'
 import iconUser from '../../Images/Icons/icon-user.svg'
 import iconBuys from '../../Images/Icons/icon-buys.svg'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Menu = () => {
 	const [itemActive, setItemActive] = useState(-1)
-	const location = useLocation()
+	const location = useLocation();
+	const navigate = useNavigate();
 
-	useEffect(()=>{
-		if(location.pathname.includes('users')){
+	useEffect(() => {
+		if (location.pathname.includes('users')) {
 			setItemActive(0);
-		}else if(location.pathname.includes('buys')){
+		} else if (location.pathname.includes('buys')) {
 			setItemActive(1)
-		}else if(location.pathname.includes('products')){
+		} else if (location.pathname.includes('products')) {
 			setItemActive(2)
 		}
-	},[])
+	}, [])
+
+	const logout=()=>{
+		localStorage.removeItem('userLaPopular')
+		navigate('/login')
+	}
 
 	const data = [
 		{
 			name: "Usuarios",
 			rute: 'users',
-			icon: iconUser	
+			icon: iconUser
 		},
 		{
 			name: "Compras",
 			rute: 'buys',
-			icon:iconBuys
-				
+			icon: iconBuys
+
 		},
 		{
 			name: "Productos",
@@ -51,11 +57,17 @@ const Menu = () => {
 					<div style={{ width: '90%', marginTop: '8px', marginLeft: 'auto', marginRight: 'auto', backgroundColor: 'black', height: '2px', borderRadius: '2em' }} />
 
 				</div>
+				<div style={{ height:'70%',display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+					<div style={{ marginLeft: '90px' }}>
+						{data.map((item, index) => <MenuItem key={index} rute={item.rute} setItemActive={setItemActive} index={index} name={item.name} icon={item.icon} isActive={index === itemActive} />)}
+					</div>
+					<div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+						<div style={{ width: '90%', marginTop: '8px', marginLeft: 'auto', marginRight: 'auto', backgroundColor: 'black', height: '1px', borderRadius: '2em' }} />
+						<div className='btn btn-outline-light mt-2' style={{color:'black',width:'80%'}} onClick={()=>logout()}>Cerrar sesión</div>
 
-				<div style={{ marginLeft: '90px' }}>
-					{data.map((item, index) => <MenuItem key={index} rute={item.rute} setItemActive={setItemActive} index={index} name={item.name} icon={item.icon} isActive={index === itemActive} />)}
+					</div>
+
 				</div>
-
 			</div>
 		</>
 	)

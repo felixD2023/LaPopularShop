@@ -7,8 +7,29 @@ const ProductUpdate = () => {
 	const navigate = useNavigate()
 
 	return (
-		<div className='w-100 mt-5' style={{ display: 'flex', height: '85%', justifyContent: 'space-evenly' }}>
-			<div style={{ display: 'flex', flexDirection: 'column' }}>
+		<div className='w-100 mt-4' style={{ display: 'flex', height: '85%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
+			{/*Search Section*/}
+      <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ marginBottom: '20px', display: 'flex', width: '80%', height: '60px', justifyContent: 'space-around', alignItems: 'end' }}>
+          <div className=''>
+            <label htmlFor="SearchByID" className="form-label" style={{ fontSize: '13px' }}>Buscar por ID</label>
+            <input type="text" className="form-control form-control-sm " id="SearchByID" placeholder="ID" />
+          </div>
+          <div className=''>
+            <label htmlFor="SearchByName" className="form-label" style={{ fontSize: '13px' }}>Buscar por Nombre</label>
+            <input type="text" className="form-control form-control-sm " id="SearchByName" placeholder="Nombre" />
+          </div>
+          <div className=''>
+            <label htmlFor="SearchByCategory" className="form-label" style={{ fontSize: '13px' }}>Buscar por Categoría</label>
+            <input type="text" autoComplete='none' className="form-control form-control-sm " id="SearchByCategory" placeholder="Categoría" />
+          </div>
+          <input className='btn btn-primary' value={'Buscar'} type='button' style={{ width: '80px', height: '40px', borderRadius: '2em' }} />
+        </div>
+        <div style={{ width: '80%', height: '1px', backgroundColor: 'silver', borderRadius: '2em' }} />
+
+      </div>
+
+			<div style={{ display: 'flex', flexDirection: 'column'}}>
 				<div className='mb-3'>
 					<label htmlFor="name" className="form-label">Nombre del producto</label>
 					<input autoComplete='none' value={product.name} type="text" className="form-control" id="name" placeholder="Nombre del producto" />
@@ -36,12 +57,12 @@ const ProductUpdate = () => {
 					<label htmlFor="Description" className="form-label">Descripción</label>
 					<input autoComplete='none' value={product.description} type="text" className="form-control" id="Description" placeholder="Descripción" />
 				</div>
-				<div class="mb-3">
-					<label htmlFor="Image" class="form-label">Imagen</label>
+				<div className="mb-3">
+					<label htmlFor="Image" className="form-label">Imagen</label>
 					<input className="form-control" type="file" id="Image" />
 				</div>
 				<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-					<input className='btn btn-success' value={'Insertar'} type='button' style={{ width: '100px', borderRadius: '2em' }} />
+					<input className='btn btn-success' value={'Actualizar'} type='button' style={{ width: '100px', borderRadius: '2em' }} />
 					<input onClick={() => navigate('/admin/products/list')} className='btn btn-danger' value={'Cancelar'} type='button' style={{ width: '100px', borderRadius: '2em' }} />
 				</div>
 			</div>

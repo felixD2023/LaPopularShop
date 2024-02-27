@@ -20,6 +20,11 @@ const Buys = () => {
 			route:'insert'
 		},
 		{
+			name: 'Actualizar uno',
+			icon:iconBuysUpdate,
+			route:'update'
+		},
+		{
 			name: 'Ver uno',
 			icon:iconBuysDetail,
 			route:'detail'
