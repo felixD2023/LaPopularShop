@@ -7,6 +7,8 @@ import { redirectToPublic } from './Utils/Utils';
 import Customer from './Pages/Customer/Customer';
 import ProductStock from './Pages/Customer/ProductStock';
 import InfoPersonal from './Pages/Customer/InfoPersonal';
+import Carrito from './Pages/Customer/Carrito.jsx';
+import MisCompras from './Pages/Customer/MisCompras.jsx';
 
 //bootstrap
 import '../scss/customer.css'
@@ -40,12 +42,26 @@ const router = createBrowserRouter([
 
     children:[
       {
-        path:'',
+        path: '',
+        element: <Navigate to={'Stock'} />
+      },
+      {
+        path:'Stock',
         element: <ProductStock/>
       },
       {
         path:'InfoPersonal',
         element: <InfoPersonal/>
+
+      },
+      {
+        path:'Carrito',
+        element: <Carrito/>
+
+      },
+      {
+        path:'MisCompras',
+        element: <MisCompras/>
 
       },
       {
