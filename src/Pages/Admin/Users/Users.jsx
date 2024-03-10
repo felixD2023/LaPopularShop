@@ -33,7 +33,7 @@ function Users() {
 	return (
 		<>
 			<div className='shadow ' style={{ background: 'white', display: 'flex', flexDirection:'column',alignItems:'center', borderRadius: '15px', width: '80%', height: '90%' }}>
-				<Navbar names={data} />
+				<Navbar names={data} bgColor={"white"}/>
 				<Outlet/>
 			</div>
 		</>
