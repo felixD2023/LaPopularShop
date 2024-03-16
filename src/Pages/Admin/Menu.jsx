@@ -19,9 +19,9 @@ const Menu = () => {
 		} else if (location.pathname.includes('products')) {
 			setItemActive(2)
 		}
-	}, [])
+	}, [location])
 
-	const logout=()=>{
+	const logout = () => {
 		localStorage.removeItem('userLaPopular')
 		navigate('/login')
 	}
@@ -57,14 +57,15 @@ const Menu = () => {
 					<div style={{ width: '90%', marginTop: '8px', marginLeft: 'auto', marginRight: 'auto', backgroundColor: 'black', height: '2px', borderRadius: '2em' }} />
 
 				</div>
-				<div style={{ height:'70%',display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+				<div style={{ height: '70%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
 					<div style={{ marginLeft: '90px' }}>
-						{data.map((item, index) => <MenuItem key={index} rute={item.rute} setItemActive={setItemActive} index={index} name={item.name} icon={item.icon} isActive={index === itemActive} />)}
+						{data.map((item, index) =>
+							<MenuItem key={index} rute={item.rute} setItemActive={setItemActive} index={index} name={item.name} icon={item.icon} isActive={index === itemActive} />
+						)}
 					</div>
-					<div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+					<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 						<div style={{ width: '90%', marginTop: '8px', marginLeft: 'auto', marginRight: 'auto', backgroundColor: 'black', height: '1px', borderRadius: '2em' }} />
-						<div className='btn btn-outline-light mt-2' style={{color:'black',width:'80%'}} onClick={()=>logout()}>Cerrar sesión</div>
-
+						<div className='btn btn-outline-light mt-2' style={{ color: 'black', width: '80%' }} onClick={() => logout()}>Cerrar sesión</div>
 					</div>
 
 				</div>

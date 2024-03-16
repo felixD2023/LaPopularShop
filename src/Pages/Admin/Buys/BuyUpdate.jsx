@@ -32,7 +32,7 @@ const BuyUpdate = () => {
           </div>
           <div className=''>
             <label htmlFor="SearchByDate" className="form-label" style={{ fontSize: '13px' }}>Buscar por Fecha</label>
-            <input type="text" autoComplete='none' className="form-control form-control-sm " id="SearchByDate" placeholder="Fecha" />
+            <input type="date" autoComplete='none' className="form-control form-control-sm " id="SearchByDate" placeholder="Fecha" />
           </div>
           <input className='btn btn-primary' value={'Buscar'} type='button' style={{ width: '80px', height: '40px', borderRadius: '2em' }} />
         </div>

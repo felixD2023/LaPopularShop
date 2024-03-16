@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { createBrowserRouter, Navigate,RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import Login from './Pages/Login/Login';
-import { redirectToPublic } from './Utils/Utils';
+import { redirectToPublic,redirectToPrivate } from './Utils/Utils';
 import Customer from './Pages/Customer/Customer';
 import ProductStock from './Pages/Customer/ProductStock';
 import InfoPersonal from './Pages/Customer/InfoPersonal';
@@ -29,45 +29,51 @@ import ProductDetail from './Pages/Admin/Products/ProductDetail';
 import BuyInsert from './Pages/Admin/Buys/BuyInsert';
 import BuyDetail from './Pages/Admin/Buys/BuyDetail.jsx';
 import BuyUpdate from './Pages/Admin/Buys/BuyUpdate.jsx';
+import { Provider } from 'react-redux';
+import { store } from './Redux/Store.js';
 
 
 const router = createBrowserRouter([
   {
+    path: '',
+    element: <Navigate to={'login'} />,
+  },
+  {
     path: '/login',
     element: <Login />,
+    loader:()=>redirectToPrivate(),
   },
   {
     path: '/customer',
-    element: <Customer/>,
+    element: <Customer />,
     loader: () => redirectToPublic(),
-
-    children:[
+    children: [
       {
         path: '',
         element: <Navigate to={'Stock'} />
       },
       {
-        path:'Stock',
-        element: <ProductStock/>
+        path: 'Stock',
+        element: <ProductStock />
       },
       {
-        path:'InfoPersonal',
-        element: <InfoPersonal/>
+        path: 'InfoPersonal',
+        element: <InfoPersonal />
 
       },
       {
-        path:'Carrito',
-        element: <Carrito/>
+        path: 'Carrito',
+        element: <Carrito />
 
       },
       {
-        path:'MisCompras',
-        element: <MisCompras/>
+        path: 'MisCompras',
+        element: <MisCompras />
 
       },
       {
-        path:'*',
-        element: <Navigate to={''}/>
+        path: '*',
+        element: <Navigate to={''} />
       }
     ]
   },
@@ -90,19 +96,19 @@ const router = createBrowserRouter([
           },
           {
             path: 'list',
-            element: <UserList/>
+            element: <UserList />
           },
           {
-            path:'insert',
-            element:<UserInsert/>
+            path: 'insert',
+            element: <UserInsert />
           },
           {
-            path:'update',
-            element:<UserUpdate/>
+            path: 'update',
+            element: <UserUpdate />
           },
           {
-            path:'detail',
-            element:<UserDetail/>
+            path: 'detail',
+            element: <UserDetail />
           }
         ]
       },
@@ -116,19 +122,19 @@ const router = createBrowserRouter([
           },
           {
             path: 'list',
-            element: <BuyList/>
+            element: <BuyList />
           },
           {
-            path:'insert',
-            element:<BuyInsert/>
+            path: 'insert',
+            element: <BuyInsert />
           },
           {
-            path:'detail',
-            element:<BuyDetail/>
+            path: 'detail',
+            element: <BuyDetail />
           },
           {
-            path:'update',
-            element:<BuyUpdate/>
+            path: 'update',
+            element: <BuyUpdate />
           }
         ]
       },
@@ -142,19 +148,19 @@ const router = createBrowserRouter([
           },
           {
             path: 'list',
-            element: <ProductList/>
+            element: <ProductList />
           },
           {
             path: 'insert',
-            element: <ProductInsert/>
+            element: <ProductInsert />
           },
           {
             path: 'update',
-            element: <ProductUpdate/>
+            element: <ProductUpdate />
           },
           {
             path: 'detail',
-            element: <ProductDetail/>
+            element: <ProductDetail />
           },
 
         ]
@@ -168,7 +174,7 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </Provider>
 )
