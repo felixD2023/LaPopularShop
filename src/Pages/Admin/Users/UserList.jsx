@@ -94,8 +94,8 @@ const UserList = () => {
 										<td>
 											<div style={{ display: 'flex' }}>
 												<div className='btn btn-outline-light' onClick={() => setUserToDelete(user.ci) } style={{ borderRadius: '50%', border: 'none', marginRight: '10px', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }} data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src={iconRemove} /></div>
-												<div className='btn btn-outline-light' onClick={() => navigate('/admin/users/update')} style={{ borderRadius: '50%', border: 'none', marginRight: '10px', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }} ><img src={iconEdit} /></div>
-												<div className='btn btn-outline-light' onClick={() => navigate('/admin/users/detail')} style={{ borderRadius: '50%', border: 'none', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}><img src={iconDetail} /></div>
+												<div className='btn btn-outline-light' onClick={() => navigate('/admin/users/update/'+user.ci)} style={{ borderRadius: '50%', border: 'none', marginRight: '10px', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }} ><img src={iconEdit} /></div>
+												<div className='btn btn-outline-light' onClick={() => navigate('/admin/users/detail/'+user.ci)} style={{ borderRadius: '50%', border: 'none', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}><img src={iconDetail} /></div>
 											</div>
 										</td>
 									</tr>

@@ -21,11 +21,25 @@ export const redirectToPrivate = () => {
   } else {
     return redirect('/customer')
   }
-
 }
 
 export const getUserLoggedIn = () => {
   return JSON.parse(localStorage.getItem("userLaPopular"))
+}
+
+export const onlyNumbers=(string)=>{
+  for(let i=0;i<string.length;i++){
+    if(!string.charAt(i)==='0' && !Number(string.charAt(i))) { return false; }
+  }
+  return true
+}
+
+export const isLastCharANumber=(string)=>{
+  return (string.charAt(string.length-1)==='0' || !!Number(string.charAt(string.length-1)))
+}
+
+export const isLastCharASpace=(string)=>{
+  return (string.charAt(string.length-1)===' ')
 }
 
 
