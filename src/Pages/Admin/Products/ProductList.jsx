@@ -1,13 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {products as productsData}  from './products.js' 
 import iconRemove from '../../../Images/Icons/icon-remove.svg'
 import iconEdit from '../../../Images/Icons/icon-edit.svg'
 import iconDetail from '../../../Images/Icons/icon-detail.svg'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearAlert, setAlert } from '../../../Redux/AlertSlice.js'
+import { setProducts } from '../../../Redux/ProductsSlice.js'
+import { axiosInstance } from '../../../Axios/Axios.js'
+import { getUserLoggedIn } from '../../../Utils/Utils.js'
 
 const UserList = () => {
+	const products = useSelector(state=>state.products.products)
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
+	const [loading, setLoading] = useState(false)
 
+	useEffect(()=>{getProducts()},[])
+	
+	const getProducts = async () => {
+		try {
+			setLoading(true)
+			dispatch(setProducts([]))
+			const user = getUserLoggedIn()
+			const response = await axiosInstance.get("/api/Products", { headers: { Authorization: `Bearer ${user.token}` } })
+			dispatch(setProducts(response.data))
+			console.log(response.data)
+		} catch (error) {
+			dispatch(setAlert({ type: "danger", message: "No fue posible cargar los datos" }))
+		} finally {
+			setLoading(false)
+		}
+	}
+	
 
 	return (
 		<div className='w-100 overflow-auto' style={{ display: 'flex', height: '85%', justifyContent: 'center' }}>
@@ -25,7 +50,7 @@ const UserList = () => {
 					</thead>
 					<tbody >
 						{
-							productsData.map((product, index) =>
+							products.map((product, index) =>
 								<tr key={index} >
 									<th scope="row">{index}</th>
 									<td>{product.name}</td>
