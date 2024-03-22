@@ -4,7 +4,7 @@ import Alert from '../../../Components/Alert'
 import { useDispatch } from 'react-redux'
 import { setAlert } from '../../../Redux/AlertSlice'
 import { axiosInstance } from '../../../Axios/Axios'
-import { isLastCharANumber, isLastCharASpace, onlyNumbers,getUserLoggedIn } from '../../../Utils/Utils'
+import { isLastCharANumber, isLastCharASpace, onlyNumbers, getUserLoggedIn } from '../../../Utils/Utils'
 
 const UserInsert = () => {
   const navigate = useNavigate()
@@ -31,7 +31,7 @@ const UserInsert = () => {
 
   const validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
 
-  const resetErrors=()=>{
+  const resetErrors = () => {
     setUserNameError(false)
     setAddressError(false)
     setCiError(false)
@@ -41,10 +41,20 @@ const UserInsert = () => {
     setPasswordError(false)
     setPhoneError(false)
   }
-
+  const resetFields = () => {
+    setUserName("")
+    setFirstName("")
+    setLastName("")
+    setPhone("")
+    setCi("")
+    setIsAdmin(false)
+    setPassword("")
+    setAddress("")
+    setEmail("")
+  }
   const insertUser = async () => {
     setLoading(true)
-    
+
     resetErrors()
     //data validation
     let errors = false;
@@ -89,12 +99,12 @@ const UserInsert = () => {
           "email": email,
           "isAdmin": isAdmin
         }
-        const response = await axiosInstance.post('/api/Users',data,{headers:{Authorization:`Bearer ${getUserLoggedIn().token}`}})
-        
-        dispatch(setAlert({type:"primary",message:"Usuario creado correctamente"}))
+        const response = await axiosInstance.post('/api/Users', data, { headers: { Authorization: `Bearer ${getUserLoggedIn().token}` } })
+        resetFields();
+        dispatch(setAlert({ type: "primary", message: "Usuario creado correctamente" }))
       } catch (error) {
-        dispatch(setAlert({type:"danger",message:"No fue posible crear el usuario"}))
-      } 
+        dispatch(setAlert({ type: "danger", message: "No fue posible crear el usuario" }))
+      }
     }
 
 
@@ -102,6 +112,8 @@ const UserInsert = () => {
 
     setLoading(false)
   }
+
+
 
 
 
@@ -131,7 +143,7 @@ const UserInsert = () => {
         </div>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'column',width:'220px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', width: '220px' }}>
         <div className='mb-3'>
           <label htmlFor="Password" className="form-label">Contraseña</label>
           <input value={password} onChange={(e) => !isLastCharASpace(e.target.value) ? setPassword(e.target.value) : null} autoComplete='none' type="password" className={`form-control ${passwordError ? 'is-invalid' : ''}`} id="Password" placeholder="Contraseña" />
@@ -152,7 +164,7 @@ const UserInsert = () => {
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <button disabled={loading} onClick={() => insertUser()} type="button" className="btn btn-success" style={{ borderRadius: '2em',marginRight:'10px',width:'150px' }}>
+          <button disabled={loading} onClick={() => insertUser()} type="button" className="btn btn-success" style={{ borderRadius: '2em', marginRight: '10px', width: '150px' }}>
             {
               loading
                 ? <>

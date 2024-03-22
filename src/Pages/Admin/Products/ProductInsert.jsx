@@ -37,7 +37,7 @@ const ProductInsert = () => {
 			if (description === '') { setDescriptionError(true) }
 			if (image == null) { setImageError(true) }
 		}
-		if (!Number(price) && !errors) {
+		if (!Number(price.toString().replace(',','.')) && !errors) {
 			setPriceError(true)
 			dispatch(setAlert({ type: "danger", message: "El precio introducido no es válido" }))
 		}
@@ -49,13 +49,13 @@ const ProductInsert = () => {
 				data.append('description', description)
 				data.append('category', category)
 				data.append('onStock', onStock)
-				data.append('price', Number(price))
+				data.append('price', price)
 				data.append('image', image)
-				const response = await axiosInstance.post('/api/Products', data, { headers: { Authorization: `Bearer ${getUserLoggedIn().token}` } })
 
+				const response = await axiosInstance.post('/api/Products', data, { headers: { Authorization: `Bearer ${getUserLoggedIn().token}` } })
+				resetFields()
 				dispatch(setAlert({ type: 'primary', message: 'Producto agregado con éxito' }))
 			} catch (error) {
-				console.log(error)
 				dispatch(setAlert({ type: 'danger', message: 'No fue posible agregar el producto' }))
 			}
 		}
@@ -69,6 +69,15 @@ const ProductInsert = () => {
 		setDescriptionError(false)
 		setImageError(false)
 	}
+	const resetFields = () => {
+		setName("")
+		setPrice("")
+		setCategory("")
+		setDescription("")
+		setOnStock(true)
+		setImage(null)
+
+	}
 
 
 	return (
@@ -80,7 +89,7 @@ const ProductInsert = () => {
 				</div>
 				<div className='mb-3'>
 					<label htmlFor="Price" className="form-label">Precio</label>
-					<input value={price} onChange={(e) => (e.target.value.charAt(e.target.value.length - 1) === '' || e.target.value.charAt(e.target.value.length - 1) === '.' || isLastCharANumber(e.target.value)) ? setPrice(e.target.value) : null} autoComplete='none' type="text" className={`form-control ${priceError ? 'is-invalid' : ''}`} id="Price" placeholder="Precio" />
+					<input value={price} onChange={(e) => (e.target.value.charAt(e.target.value.length - 1) === '' || e.target.value.charAt(e.target.value.length - 1) === ',' || isLastCharANumber(e.target.value)) ? setPrice(e.target.value) : null} autoComplete='none' type="text" className={`form-control ${priceError ? 'is-invalid' : ''}`} id="Price" placeholder="Precio" />
 				</div>
 				<div className="form-check">
 					<input checked={onStock} onChange={(e) => setOnStock(e.target.checked)} autoComplete='none' className="form-check-input" type="checkbox" id="OnStock" />

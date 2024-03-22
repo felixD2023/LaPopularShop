@@ -143,7 +143,6 @@ const UserUpdate = () => {
   }
 
   const setData=(us)=>{
-    console.log(us)
     setUserName(us.username)
     setFirstName(us.firstName)
     setLastName(us.lastName)
@@ -187,10 +186,7 @@ const UserUpdate = () => {
           {usersSearched.map(us =>
             <li key={us.ci} className="list-group-item " onClick={()=>setData(us)}><div  style={{display:'flex',justifyContent:'space-between',cursor:'pointer'}}><div>{us.username}</div><div>{us.firstName}&nbsp;{us.lastName}</div><div>{us.ci}</div> <div>{us.isAdmin?"Administrador":'Cliente'}</div> </div></li>
           )}
-
-
         </ul>
-
         <div style={{ width: '80%', height: '1px', backgroundColor: 'silver', borderRadius: '2em' }} />
       </div>
 
