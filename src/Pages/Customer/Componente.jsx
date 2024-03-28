@@ -1,10 +1,9 @@
 import React from 'react'
-
 const Componente = ({ imagen, precio, nombre }) => {
 	return (
 		<div className='shadow' style={{width:"235px",height:"235px",borderRadius:"20%",marginRight:"60px",marginBottom:"10px",backgroundColor:"#ffffff"}}>
 			<div style={{display:"flex", justifyContent:"center"}}> 
-			<img src={imagen} style={{width:"130px", height:"130px",marginBottom:"20px"}}></img>
+			<img src={imagen } style={{width:"130px", height:"130px",marginBottom:"20px"}}></img>
 			</div>
 			
 			<div className='h6' style={{marginLeft:"90px"}}>{nombre}</div>
