@@ -11,34 +11,34 @@ import { useSelector } from 'react-redux'
 
 
 function Users() {
-	const alert = useSelector(state=>state.alert)
+	const alert = useSelector(state => state.alert)
 	const data = [
 		{
 			name: 'Todos los usuarios',
 			icon: iconUserList,
-			route:'list'
+			route: 'list'
 		},
 		{
 			name: 'Insertar uno',
 			icon: iconUserInsert,
-			route:'insert'
+			route: 'insert'
 		},
 		{
 			name: 'Modificar uno',
 			icon: iconUserUpdate,
-			route:'update'
+			route: 'update'
 		}, {
 			name: 'Ver uno',
 			icon: iconUserDetail,
-			route:'detail'
+			route: 'detail'
 		}]
 
 	return (
 		<>
-			<div className='shadow ' style={{ position:'relative',overflow:'hidden',background: 'white', display: 'flex', flexDirection:'column',alignItems:'center', borderRadius: '15px', width: '80%', height: '90%' }}>
-				<Navbar names={data} bgColor={"white"}/>
-				<Outlet/>
-				<Alert type={alert.type} message={alert.message} visible={alert.message!=""} />
+			<div className='shadow ' style={{ position: 'relative', overflow: 'hidden', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', borderRadius: '15px', width: '80%', height: '90%' }}>
+				<Navbar names={data} bgColor={"white"} />
+				<Outlet />
+				<Alert type={alert.type} message={alert.message} visible={alert.message != ""} />
 			</div>
 		</>
 	)
