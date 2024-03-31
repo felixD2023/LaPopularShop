@@ -29,7 +29,6 @@ const BuyInsert = () => {
 			count += prod.quantity
 		});
 		setQuantity(count);
-		console.log(buy)
 	}, [buy])
 
 	useEffect(() => {

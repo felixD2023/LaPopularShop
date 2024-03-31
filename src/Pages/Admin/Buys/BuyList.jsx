@@ -3,7 +3,7 @@ import iconRemove from '../../../Images/Icons/icon-remove.svg'
 import iconEdit from '../../../Images/Icons/icon-edit.svg'
 import iconDetail from '../../../Images/Icons/icon-detail.svg'
 import { useNavigate } from 'react-router-dom'
-import { setBuys } from '../../../Redux/BuysSlice'
+import { setBuys, deleteABuy } from '../../../Redux/BuysSlice'
 import { setAlert, clearAlert } from '../../../Redux/AlertSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { axiosInstance } from '../../../Axios/Axios'
@@ -14,8 +14,9 @@ const BuyList = () => {
 	const buys = useSelector(state => state.buys.buys)
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
-	const [loading,setLoading] = useState()
-	
+	const [loading, setLoading] = useState(false)
+	const [buyIdDelete, setBuyIdDelete] = useState("")
+
 	useEffect(() => {
 		getBuys()
 	}, [])
@@ -28,10 +29,20 @@ const BuyList = () => {
 			const response = await axiosInstance.get("/api/Buys", { headers: { Authorization: `Bearer ${user.token}` } })
 			dispatch(setBuys(response.data))
 		} catch (error) {
-			console.log(error)
 			dispatch(setAlert({ type: "danger", message: "No fue posible cargar los datos" }))
 		} finally {
 			setLoading(false)
+		}
+	}
+
+	const deleteBuy = async () => {
+		if (!!buyIdDelete) {
+			try {
+				await axiosInstance.delete('/api/Buys/' + buyIdDelete, { headers: { Authorization: `Bearer ${getUserLoggedIn().token}` } })
+				dispatch(deleteABuy(buyIdDelete))
+			} catch (error) {
+				dispatch(setAlert({ type: "danger", message: "No fue posible eliminar la compra" }))
+			}
 		}
 	}
 
@@ -61,9 +72,9 @@ const BuyList = () => {
 										<td>${buy.totalValue}</td>
 										<td>
 											<div style={{ display: 'flex', width: '10px' }}>
-												<div className='btn btn-outline-light' style={{ borderRadius: '50%', border: 'none', marginRight: '10px', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }} data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src={iconRemove} /></div>
-												<div className='btn btn-outline-light' onClick={() => navigate('/admin/buys/update')} style={{ borderRadius: '50%', border: 'none', marginRight: '10px', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}><img src={iconEdit} /></div>
-												<div className='btn btn-outline-light' onClick={() => navigate('/admin/buys/detail')} style={{ borderRadius: '50%', border: 'none', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}><img src={iconDetail} /></div>
+												<div className='btn btn-outline-light' onClick={() => setBuyIdDelete(buy.id)} style={{ borderRadius: '50%', border: 'none', marginRight: '10px', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }} data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src={iconRemove} /></div>
+												<div className='btn btn-outline-light' onClick={() => navigate('/admin/buys/update/' + buy.id)} style={{ borderRadius: '50%', border: 'none', marginRight: '10px', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}><img src={iconEdit} /></div>
+												<div className='btn btn-outline-light' onClick={() => navigate('/admin/buys/detail/' + buy.id)} style={{ borderRadius: '50%', border: 'none', width: '30px', height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}><img src={iconDetail} /></div>
 											</div>
 										</td>
 									</tr>
@@ -89,7 +100,7 @@ const BuyList = () => {
 						</div>
 						<div className="modal-footer">
 							<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-							<button type="button" className="btn btn-danger">Eliminar</button>
+							<button onClick={() => { deleteBuy() }} type="button" className="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
 						</div>
 					</div>
 				</div>
