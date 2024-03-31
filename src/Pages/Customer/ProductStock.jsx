@@ -26,7 +26,7 @@ const ProductStock = () => {
   return (
     <div style={{display:"flex",flexWrap:"wrap",height:"50px",padding:"0px 15px",width:"90%",margin:"auto",marginTop:"40px"}}>
         {
-          listaProducto.map((cursor)=><Componente key={cursor.name} imagen={cursor.image} nombre={cursor.name} precio={cursor.price}></Componente>)
+          listaProducto.map((producto)=><Componente key={producto.name} producto={producto}></Componente>)
         }
       
     </div>

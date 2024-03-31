@@ -1,12 +1,19 @@
 import React from 'react'
 import { products } from "../Admin/Products/products"
 import ComponenteProducto from './ComponenteProducto'
+import { useSelector } from 'react-redux'
+
 
 const Carrito = () => {
+
+  const carrito=useSelector((state)=>state.cart)
+ 
+
+
   return (
     <div style={{marginTop:"40px"}}>
       {
-        products.map((cursor)=> <ComponenteProducto key={cursor.name} nombre={cursor.name}imagen={cursor.img} categoria={cursor.category} precio={cursor.price} descripcion={cursor.description} ></ComponenteProducto>)
+        carrito.productos.map((producto)=> <ComponenteProducto key={producto.name} producto={producto} ></ComponenteProducto>)
       }
        
       
