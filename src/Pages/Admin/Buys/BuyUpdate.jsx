@@ -32,7 +32,8 @@ const BuyUpdate = () => {
 	const dispatch = useDispatch()
 	const [productsQuantity, setProductQuantity] = useState(0)
 	const [loading, setLoading] = useState(false)
-	const [dateTime, setDateTime] = useState({ date: '00/00/0000', time:'00:00:00' })
+	const [dateTime, setDateTime] = useState({ date: '00/00/0000', time: '00:00:00' })
+
 
 	useEffect(() => {
 		getBuy()
@@ -74,30 +75,27 @@ const BuyUpdate = () => {
 		}
 	}
 
+	const searchBuys = async () => {
+		setLoadingSearch(true)
+		let errors = false
+
+		if (!errors) {
+			try {
+
+
+
+			} catch (error) {
+				dispatch(setAlert({ type: "danger", message: "No fue posible realizar la búsqueda" }))
+			}
+		}
+
+		setLoadingSearch(false)
+
+	}
+
+
 	return (
 		<div className='w-100 mt-4' style={{ display: 'flex', height: '85%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
-
-			{/*Search Section*/}
-			<div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-				<div style={{ marginBottom: '20px', display: 'flex', width: '80%', height: '60px', justifyContent: 'space-around', alignItems: 'end' }}>
-					<div className=''>
-						<label htmlFor="SearchByID" className="form-label" style={{ fontSize: '13px' }}>Buscar por ID</label>
-						<input type="text" className="form-control form-control-sm " id="SearchByID" placeholder="ID" />
-					</div>
-					<div className=''>
-						<label htmlFor="SearchByCustomer" className="form-label" style={{ fontSize: '13px' }}>Buscar por Cliente</label>
-						<input type="text" className="form-control form-control-sm " id="SearchByCustomer" placeholder="Nombre del Cliente" />
-					</div>
-					<div className=''>
-						<label htmlFor="SearchByDate" className="form-label" style={{ fontSize: '13px' }}>Buscar por Fecha</label>
-						<input type="date" autoComplete='none' className="form-control form-control-sm " id="SearchByDate" placeholder="Fecha" />
-					</div>
-					<input className='btn btn-primary' value={'Buscar'} type='button' style={{ width: '80px', height: '40px', borderRadius: '2em' }} />
-				</div>
-				<div style={{ width: '80%', height: '1px', backgroundColor: 'silver', borderRadius: '2em' }} />
-
-			</div>
-
 
 			<div style={{ display: 'flex', flexDirection: 'column' }}>
 				<div className='mb-3'>
@@ -125,14 +123,6 @@ const BuyUpdate = () => {
 				<div className='mb-3'>
 					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Fecha: </span>{dateTime.date}</div>
 				</div>
-
-			</div>
-
-			<div style={{ display: 'flex', flexDirection: 'column' }}>
-				<div style={{ border: '1px solid #dee2e6', overflow: 'auto', display: 'flex', flexWrap: 'wrap', alignItems: 'start', height: '350px', width: '350px', borderRadius: '15px', marginBottom: '50px' }}>
-					{buy.products.map((product, index) => <ProductItem key={index} height={'100px'} product={product.product} />)}
-
-				</div>
 				<div style={{ display: 'flex', width: '250px', justifyContent: 'space-between' }}>
 					<button disabled={loading} onClick={() => updateBuyStatus()} type="button" className="btn btn-success" style={{ borderRadius: '2em', height: '40px', marginRight: '10px', width: '150px' }}>
 						{
@@ -147,6 +137,15 @@ const BuyUpdate = () => {
 
 					<input onClick={() => navigate('/admin/buys/list')} className='btn btn-danger' value={'Cancelar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
 				</div>
+
+			</div>
+
+			<div style={{ display: 'flex', flexDirection: 'column' }}>
+				<div style={{ border: '1px solid #dee2e6', overflow: 'auto', display: 'flex', flexWrap: 'wrap', alignItems: 'start', height: '320px', width: '350px', borderRadius: '15px', marginBottom: '50px' }}>
+					{buy.products.map((product, index) => <ProductItem key={index} height={'100px'} product={product.product} />)}
+
+				</div>
+
 
 			</div>
 		</div>
