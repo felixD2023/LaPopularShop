@@ -135,7 +135,15 @@ const router = createBrowserRouter([
             element: <BuyDetail />
           },
           {
+            path: 'detail/:buyId',
+            element: <BuyDetail />
+          },
+          {
             path: 'update',
+            element: <BuyUpdate />
+          },
+          {
+            path: 'update/:buyId',
             element: <BuyUpdate />
           }
         ]

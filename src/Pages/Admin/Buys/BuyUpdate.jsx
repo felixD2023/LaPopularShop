@@ -1,88 +1,156 @@
-import React, { useState } from 'react'
-import { buys,states } from './buys'
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { buys, states } from './buys'
+import { useNavigate, useParams } from 'react-router-dom';
 import ProductItem from './ProductItem';
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import { axiosInstance } from '../../../Axios/Axios';
+import { getUserLoggedIn } from '../../../Utils/Utils';
+import { setAlert } from '../../../Redux/AlertSlice';
 
 const BuyUpdate = () => {
-	const [buy, setBuy] = useState(buys[0])
+	const buys = useSelector(state => state.buys)
+	const [buy, setBuy] = useState({
+		"id": "",
+		"status": "",
+		"totalValue": 0,
+		"user": {
+			"ci": "",
+			"firstName": "",
+			"lastName": "",
+			"username": "",
+			"address": "",
+			"phone": 0,
+			"email": "",
+			"isAdmin": false,
+			"isActive": true
+		},
+		"products": [],
+		"date": ""
+	})
+	const { buyId } = useParams()
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
+	const [productsQuantity, setProductQuantity] = useState(0)
+	const [loading, setLoading] = useState(false)
+	const [dateTime, setDateTime] = useState({ date: '00/00/0000', time:'00:00:00' })
 
-	const TotalPrice = () => {
+	useEffect(() => {
+		getBuy()
+	}, [])
+	const getBuy = async () => {
+		if (buyId) {
+			try {
+				const response = await axiosInstance.get('/api/Buys/' + buyId, { headers: { Authorization: `Bearer ${getUserLoggedIn().token}` } })
+				setBuy(response.data)
+			} catch (error) {
+				dispatch(setAlert({ type: 'danger', message: "No fue posible obtener los datos" }))
+			}
+		}
+	}
+
+	useEffect(() => {
 		let sum = 0
 		if (buy.products) {
-			buy.products.forEach((product) => sum += product.price)
+			buy.products.forEach((product) => sum += product.quantity)
 		}
-		return sum;
-	}
-  return (
-    <div className='w-100 mt-4' style={{ display: 'flex', height: '85%', justifyContent: 'space-evenly',flexWrap:'wrap' }}>
-			
-			{/*Search Section*/}
-      <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div style={{ marginBottom: '20px', display: 'flex', width: '80%', height: '60px', justifyContent: 'space-around', alignItems: 'end' }}>
-          <div className=''>
-            <label htmlFor="SearchByID" className="form-label" style={{ fontSize: '13px' }}>Buscar por ID</label>
-            <input type="text" className="form-control form-control-sm " id="SearchByID" placeholder="ID" />
-          </div>
-          <div className=''>
-            <label htmlFor="SearchByCustomer" className="form-label" style={{ fontSize: '13px' }}>Buscar por Cliente</label>
-            <input type="text" className="form-control form-control-sm " id="SearchByCustomer" placeholder="Nombre del Cliente" />
-          </div>
-          <div className=''>
-            <label htmlFor="SearchByDate" className="form-label" style={{ fontSize: '13px' }}>Buscar por Fecha</label>
-            <input type="date" autoComplete='none' className="form-control form-control-sm " id="SearchByDate" placeholder="Fecha" />
-          </div>
-          <input className='btn btn-primary' value={'Buscar'} type='button' style={{ width: '80px', height: '40px', borderRadius: '2em' }} />
-        </div>
-        <div style={{ width: '80%', height: '1px', backgroundColor: 'silver', borderRadius: '2em' }} />
+		setProductQuantity(sum)
+		if (buy.date) {
+			const date = new Date(buy.date)
+			setDateTime({ date: `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`, time: `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}` })
+		}
 
-      </div>
+	}, [buy])
+
+
+	const updateBuyStatus = async () => {
+		setLoading(true)
+		try {
+			await axiosInstance.put('/api/Buys/' + buy.id, { status: buy.status }, { headers: { Authorization: `Bearer ${getUserLoggedIn().token}` } })
+			dispatch(setAlert({ type: 'primary', message: "Estado actualizado" }))
+		} catch (error) {
+			dispatch(setAlert({ type: 'danger', message: "No fue posible actualizar estado" }))
+		} finally {
+			setLoading(false)
+		}
+	}
+
+	return (
+		<div className='w-100 mt-4' style={{ display: 'flex', height: '85%', justifyContent: 'space-evenly', flexWrap: 'wrap' }}>
+
+			{/*Search Section*/}
+			<div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+				<div style={{ marginBottom: '20px', display: 'flex', width: '80%', height: '60px', justifyContent: 'space-around', alignItems: 'end' }}>
+					<div className=''>
+						<label htmlFor="SearchByID" className="form-label" style={{ fontSize: '13px' }}>Buscar por ID</label>
+						<input type="text" className="form-control form-control-sm " id="SearchByID" placeholder="ID" />
+					</div>
+					<div className=''>
+						<label htmlFor="SearchByCustomer" className="form-label" style={{ fontSize: '13px' }}>Buscar por Cliente</label>
+						<input type="text" className="form-control form-control-sm " id="SearchByCustomer" placeholder="Nombre del Cliente" />
+					</div>
+					<div className=''>
+						<label htmlFor="SearchByDate" className="form-label" style={{ fontSize: '13px' }}>Buscar por Fecha</label>
+						<input type="date" autoComplete='none' className="form-control form-control-sm " id="SearchByDate" placeholder="Fecha" />
+					</div>
+					<input className='btn btn-primary' value={'Buscar'} type='button' style={{ width: '80px', height: '40px', borderRadius: '2em' }} />
+				</div>
+				<div style={{ width: '80%', height: '1px', backgroundColor: 'silver', borderRadius: '2em' }} />
+
+			</div>
 
 
 			<div style={{ display: 'flex', flexDirection: 'column' }}>
 				<div className='mb-3'>
-					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Cliente: </span> {buy.user.firstName}</div>
+					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Cliente: </span> {buy.user.firstName + ' ' + buy.user.lastName} </div>
 				</div>
 
 				<div className='mb-3'>
-					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Valor Total: </span> ${TotalPrice()}</div>
+					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Valor Total: </span> ${buy.totalValue}</div>
 				</div>
 				<div className='mb-3'>
-					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Total de Productos: </span>{buy.products.length}</div>
+					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Total de Productos: </span>{productsQuantity}</div>
 				</div>
 				<div className='mb-3'>
 					<label htmlFor="User" className="form-label">Estado:</label>
-					<select className="form-select" aria-label="Default select example">
+					<select value={buy.status} onChange={(e) => { setBuy({ ...buy, status: e.target.value }) }} className="form-select" aria-label="Default select example">
 						{
 							states.map((state, index) =>
-								<option key={index} value={index}>{state}</option>)
+								<option key={state} value={state}>{state}</option>)
 						}
 					</select>
 				</div>
 				<div className='mb-3'>
-					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Hora: </span>{buy.hour}</div>
+					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Hora: </span>{dateTime.time}</div>
 				</div>
 				<div className='mb-3'>
-					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Fecha: </span>{buy.date}</div>
+					<div style={{ fontSize: '16px' }}><span style={{ fontSize: '15px', fontWeight: 'bold' }}>Fecha: </span>{dateTime.date}</div>
 				</div>
 
 			</div>
 
 			<div style={{ display: 'flex', flexDirection: 'column' }}>
 				<div style={{ border: '1px solid #dee2e6', overflow: 'auto', display: 'flex', flexWrap: 'wrap', alignItems: 'start', height: '350px', width: '350px', borderRadius: '15px', marginBottom: '50px' }}>
-					{buy.products.map((product, index) => <ProductItem key={index} height={'100px'} product={product} />)}
+					{buy.products.map((product, index) => <ProductItem key={index} height={'100px'} product={product.product} />)}
 
 				</div>
 				<div style={{ display: 'flex', width: '250px', justifyContent: 'space-between' }}>
-          <input className='btn btn-success' value={'Actualizar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
-          <input onClick={() => navigate('/admin/buys/list')} className='btn btn-danger' value={'Cancelar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
-        </div>
-				
+					<button disabled={loading} onClick={() => updateBuyStatus()} type="button" className="btn btn-success" style={{ borderRadius: '2em', height: '40px', marginRight: '10px', width: '150px' }}>
+						{
+							loading
+								? <>
+									<span className="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+									<span role="status">&nbsp;&nbsp;Loading...</span>
+								</>
+								: <span>Actualizar</span>
+						}
+					</button>
+
+					<input onClick={() => navigate('/admin/buys/list')} className='btn btn-danger' value={'Cancelar'} type='button' style={{ width: '100px', height: '40px', borderRadius: '2em' }} />
+				</div>
+
 			</div>
 		</div>
-  )
+	)
 }
 
 export default BuyUpdate
