@@ -8,7 +8,6 @@ import Customer from './Pages/Customer/Customer';
 import ProductStock from './Pages/Customer/ProductStock';
 import InfoPersonal from './Pages/Customer/InfoPersonal';
 import Carrito from './Pages/Customer/Carrito.jsx';
-import MisCompras from './Pages/Customer/MisCompras.jsx';
 
 //bootstrap
 import '../scss/customer.css'
@@ -64,11 +63,6 @@ const router = createBrowserRouter([
       {
         path: 'Carrito',
         element: <Carrito />
-
-      },
-      {
-        path: 'MisCompras',
-        element: <MisCompras />
 
       },
       {

@@ -18,7 +18,7 @@ const ProductStock = () => {
       const response= await axiosInstance.get("/api/Products/OnStock",{headers:{Authorization:"Bearer "+getUserLoggedIn().token}})
        setListaProducto(response.data)
     } catch (error) {
-      console.log(error)
+      
     }
 
   }
